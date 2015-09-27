@@ -3,6 +3,9 @@ md-toolbar.toolbar(layout='row', layout-align='start center', layout-padding='')
     meteor-include(src='loginButtons')
     //- md-button(ng-href='/about') About
     md-button(ng-href="/") RefactorQ
-  span(flex='')
+  md-input-container.md-icon-float(flex)
+    label Search
+    <md-icon class="material-icons">face</md-icon>
+    input(ng-model='search', type='text')
   .navbar-right
     blaze-template(name="loginButtons")
