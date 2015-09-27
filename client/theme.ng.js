@@ -3,6 +3,6 @@
 angular.module('refactorQApp')
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-  .primaryPalette('yellow')
+  .primaryPalette('blue-grey')
   .accentPalette('yellow');
 });
