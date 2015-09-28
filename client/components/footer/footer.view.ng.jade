@@ -1,10 +1,9 @@
-md-toolbar.toolbar(layout='row', layout-align='start center', layout-padding='')
+md-toolbar.toolbar(ng-show='avatar', layout='row', layout-align='start center', layout-padding='')
   .navbar-left(layout='row', layout-align='center center')
-    md-button(ng-href="/")
-  md-input-container.md-icon-float(flex)
+    img(class='avatar', src='{{currentAvatar}}')
+  md-input-container(flex)
     label Submit your help request here
-    md-icon(md-font-set="material-icons") inbox
     input(ng-model='search', type='text')
   .navbar-right
-    md-button(class="md-primary" ng-href="/") submit {{avatar}}
+    md-icon(md-font-set="material-icons") keyboard_return
 

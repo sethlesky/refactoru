@@ -3,17 +3,14 @@ if (Meteor.isClient) {
   Meteor.subscribe('userData');
 
   Tracker.autorun(function(){
-    if(Meteor.userId()){
+    if(Meteor.user()){
       console.log('its running!');
       var username = Meteor.user().services.github.username;
       Session.set('avatar', username);
     } else {
-      Session.set('avatar', 'none');
+      Session.set('avatar', null);
     }
   });
-
-
-
 }
 
 if (Meteor.isServer) {
