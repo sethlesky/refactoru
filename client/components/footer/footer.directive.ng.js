@@ -10,6 +10,7 @@ angular.module('refactorQApp')
       $meteor.session('avatar').bind(scope, 'avatar');
       // query https://api.github.com/users/[username]
       // $http;
+      // console.log("https://api.github.com/users/" + scope.avatar);
       $http.get("https://api.github.com/users/" + scope.avatar)
             .success(function(response) {
               scope.currentAvatar = response.avatar_url;
