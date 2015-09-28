@@ -7,6 +7,7 @@ if (Meteor.isClient) {
       console.log('its running!');
       var username = Meteor.user().services.github.username;
       Session.set('avatar', username);
+      // console.log(username);
     } else {
       Session.set('avatar', null);
     }
