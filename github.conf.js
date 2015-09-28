@@ -4,12 +4,12 @@ if (Meteor.isClient) {
 
   Tracker.autorun(function(){
     if(Meteor.user()){
-      console.log('its running!');
+      console.log('logged in');
       var username = Meteor.user().services.github.id;
       Session.set('avatar', username);
     } else {
       Session.set('avatar', false);
-      console.log('not logged in');
+      console.log('logged out');
     }
   });
 }

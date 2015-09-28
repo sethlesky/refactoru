@@ -1,26 +1,66 @@
 .main(layout='row')
   span(flex)
-  div(layout='column' flex='70' flex-md='90' flex-sm='100')
-    h1 Request for help
-    form.md-whiteframe-z1(ng-submit='save()', name='form', novalidate='', layout-padding='')
-      p Add a request
-      md-input-container
-        label Name
-        input(ng-model='newThing.name', placeholder='Name')
-      input.md-button(type='submit', value='Add')
-    div(layout='row', layout-padding='')
-      md-input-container(flex='65')
-        label Search
-        input(type='search', ng-model='search', placeholder='Search')
-      md-select(ng-model='orderProperty', flex='35')
-        md-option(value='1') Ascending
-        md-option(value='-1') Descending
+  div(layout='column' flex-gt-lg='75')
+    div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
+      md-content.md-padding
+        md-card
+          md-card-content
+            img(src="https://avatars.githubusercontent.com/u/271898?v=3" class="avatar")
+            span(class="username") Seth Lesky
+            p
+              | The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+              | two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          .md-actions(layout='row', layout-align='end center')
+            md-button Edit
+            md-input-container(class="status")
+              label Status
+              md-select(ng-model='itemState')
+                md-option(value='Open')
+                  | Open
+                md-option(value='In Progress')
+                  | In Progress
+                md-option(value='Closed')
+                  | Closed
 
-    ul
-      li(dir-paginate='thing in things | itemsPerPage: perPage', total-items='thingsCount.count',  current-page='page')
-        p {{ thing.name }}
-          button(ng-click='remove(thing)') &times;
-    dir-pagination-controls(on-page-change='pageChanged(newPageNumber)')
 
-    p Total number of things: {{thingsCount.count}}
+        md-card
+          md-card-content
+            img(src="http://blog.texasbar.com/files/2011/12/housto-bankruptcy-attorney-adam-schachter1.jpg" class="avatar")
+            span(class="username") Joe Shmoe
+            p
+              | The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+              | two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          .md-actions(layout='row', layout-align='end center')
+            md-button Edit
+            md-input-container(class="status")
+              label Status
+              md-select(ng-model='itemState')
+                md-option(value='Open')
+                  | Open
+                md-option(value='In Progress')
+                  | In Progress
+                md-option(value='Closed')
+                  | Closed
+
+
+        md-card
+          md-card-content
+            img(src="http://static1.squarespace.com/static/505c959284ae57cc4c2b5878/t/525f0419e4b09f9731f515cb/1381958682689/heavenmcarthur-profile-square-300px.jpg" class="avatar")
+            span(class="username") Jane Smith
+            p
+              | The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+              | two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          .md-actions(layout='row', layout-align='end center')
+            md-button Edit
+            md-input-container(class="status")
+              label Status
+              md-select(ng-model='itemState')
+                md-option(value='Open')
+                  | Open
+                md-option(value='In Progress')
+                  | In Progress
+                md-option(value='Closed')
+                  | Closed
+
+
   span(flex)
