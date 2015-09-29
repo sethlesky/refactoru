@@ -1,17 +1,19 @@
 if (Meteor.isClient) {
 
-  Meteor.subscribe('userData');
   Meteor.subscribe('requests');
 
-  Tracker.autorun(function(){
-    if(Meteor.user()){
-      console.log('logged in');
-      var username = Meteor.user().services.github.id;
-      Session.set('avatar', username);
-    } else {
-      Session.set('avatar', false);
-      console.log('logged out');
-    }
+  Meteor.subscribe("userData", {
+    onReady: function () {
+      Tracker.autorun(function(){
+        if(Meteor.userId() && Meteor.user()){
+          var username = Meteor.user().services.github.id;
+          Session.set('avatar', username);
+        } else {
+          Session.set('avatar', false);
+        }
+      });
+    },
+    onError: function () { console.log("onError", arguments); }
   });
 }
 

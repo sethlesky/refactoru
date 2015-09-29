@@ -3,7 +3,7 @@
   div(layout='column' flex-gt-lg='75')
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
       md-content.md-padding
-        md-card(ng-repeat="request in requests")
+        md-card(ng-repeat="request in requests | filter:search")
           md-card-content
             img(ng-src="https://avatars.githubusercontent.com/u/{{request.uid}}" class="avatar")
             span(class="time" am-time-ago="request.time")
