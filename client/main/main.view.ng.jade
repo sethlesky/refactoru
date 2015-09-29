@@ -1,68 +1,22 @@
 .main(layout='row')
-  //- ul
-  //-   li(ng-repeat="thing in things") {{thing}}
-  ul
-    li(ng-repeat="request in requests") {{request.name}} - {{request.time}} - {{request.content}}
   span(flex)
   div(layout='column' flex-gt-lg='75')
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
       md-content.md-padding
-        md-card
+        md-card(ng-repeat="request in requests")
           md-card-content
-            img(src="https://avatars.githubusercontent.com/u/271898?v=3" class="avatar")
-            span(class="username") Seth Lesky
-            p
-              | The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              | two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+            img(ng-src="https://avatars.githubusercontent.com/u/{{request.uid}}" class="avatar")
+            span(class="username") {{request.name}}
+            p {{request.content}}
           .md-actions(layout='row', layout-align='end center')
             md-button Edit
             md-input-container(class="status")
               label Status
-              md-select(ng-model='itemState')
-                md-option(value='Open')
+              md-select(ng-model='request.status')
+                md-option(value=0)
                   | Open
-                md-option(value='In Progress')
+                md-option(value=1)
                   | In Progress
-                md-option(value='Closed')
-                  | Closed
-
-
-        md-card
-          md-card-content
-            img(src="http://blog.texasbar.com/files/2011/12/housto-bankruptcy-attorney-adam-schachter1.jpg" class="avatar")
-            span(class="username") Joe Shmoe
-            p
-              | The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              | two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-          .md-actions(layout='row', layout-align='end center')
-            md-button Edit
-            md-input-container(class="status")
-              label Status
-              md-select(ng-model='itemState')
-                md-option(value='Open')
-                  | Open
-                md-option(value='In Progress')
-                  | In Progress
-                md-option(value='Closed')
-                  | Closed
-
-
-        md-card
-          md-card-content
-            img(src="http://static1.squarespace.com/static/505c959284ae57cc4c2b5878/t/525f0419e4b09f9731f515cb/1381958682689/heavenmcarthur-profile-square-300px.jpg" class="avatar")
-            span(class="username") Jane Smith
-            p
-              | The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              | two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-          .md-actions(layout='row', layout-align='end center')
-            md-button Edit
-            md-input-container(class="status")
-              label Status
-              md-select(ng-model='itemState')
-                md-option(value='Open')
-                  | Open
-                md-option(value='In Progress')
-                  | In Progress
-                md-option(value='Closed')
+                md-option(value=2)
                   | Closed
   span(flex)
