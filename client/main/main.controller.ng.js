@@ -10,6 +10,11 @@ angular.module('refactorQApp')
   $scope.things = $scope.$meteorCollection(function() {
     return Things.find({}, {sort:$scope.getReactively('sort')});
   });
+
+  $scope.requests = $scope.$meteorCollection(function() {
+    return Requests.find({}, {sort:$scope.getReactively('sort')});
+  });
+
   $meteor.autorun($scope, function() {
     $scope.$meteorSubscribe('things', {
       limit: parseInt($scope.getReactively('perPage')),

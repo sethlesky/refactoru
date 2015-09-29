@@ -1,4 +1,8 @@
 .main(layout='row')
+  //- ul
+  //-   li(ng-repeat="thing in things") {{thing}}
+  ul
+    li(ng-repeat="request in requests") {{request.name}} - {{request.time}} - {{request.content}}
   span(flex)
   div(layout='column' flex-gt-lg='75')
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
@@ -61,6 +65,4 @@
                   | In Progress
                 md-option(value='Closed')
                   | Closed
-
-
   span(flex)
