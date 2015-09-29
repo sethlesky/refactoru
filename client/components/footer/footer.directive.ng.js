@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('refactorQApp')
-.directive('footer', function($meteor, $http) {
+.directive('footer', function($meteor, $http, requestQueue) {
   return {
     restrict: 'EA',
     templateUrl: 'client/components/footer/footer.view.html',
