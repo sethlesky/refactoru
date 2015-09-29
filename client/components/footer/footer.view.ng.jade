@@ -3,7 +3,7 @@ md-toolbar.toolbar(ng-show='avatar', layout='row', layout-align='start center', 
     img(class='avatar', src='{{currentAvatar}}')
   md-input-container(flex)
     label Submit your help request here
-    input(ng-model='search', type='text')
+    input(ng-model='requestInput' ng-enter="addRequest()" type='text')
   .navbar-right
     md-icon(md-font-set="material-icons") keyboard_return
 
