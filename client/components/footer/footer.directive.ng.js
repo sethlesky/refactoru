@@ -9,9 +9,9 @@ angular.module('refactorQApp')
     link: function(scope, elem, attrs) {
       $meteor.session('avatar').bind(scope, 'avatar');
       scope.currentAvatar = "https://avatars.githubusercontent.com/u/" + scope.avatar;
-      scope.addRequest = function(){
-        console.log('fire!');
-        $scope.requestInput = '';
+      scope.addRequest = function(requestInput){
+        console.log(requestInput);
+        scope.requestInput = '';
       }
     }
   };
