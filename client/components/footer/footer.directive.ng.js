@@ -7,9 +7,8 @@ angular.module('refactorQApp')
     templateUrl: 'client/components/footer/footer.view.html',
     replace: true,
     link: function(scope, elem, attrs) {
-      $meteor.session('avatar').bind(scope, 'avatar');
-      // scope.currentAvatar = "https://avatars.githubusercontent.com/u/" + scope.avatar;
-      // scope.requests = requestQueue.getQueue();
+      $meteor.session('githubId').bind(scope, 'githubId');
+      scope.requests = requestQueue.getQueue();
       scope.addRequest = function(requestInput){
         scope.requests.save({
           'uid'       : Meteor.user().services.github.id,
