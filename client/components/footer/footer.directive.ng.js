@@ -8,8 +8,8 @@ angular.module('refactorQApp')
     replace: true,
     link: function(scope, elem, attrs) {
       $meteor.session('avatar').bind(scope, 'avatar');
-      scope.currentAvatar = "https://avatars.githubusercontent.com/u/" + scope.avatar;
-      scope.requests = requestQueue.getQueue();
+      // scope.currentAvatar = "https://avatars.githubusercontent.com/u/" + scope.avatar;
+      // scope.requests = requestQueue.getQueue();
       scope.addRequest = function(requestInput){
         scope.requests.save({
           'uid'       : Meteor.user().services.github.id,

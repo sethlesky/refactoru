@@ -1,6 +1,6 @@
 md-toolbar.toolbar(ng-show='avatar', layout='row', layout-align='start center', layout-padding='')
   .navbar-left(layout='row', layout-align='center center')
-    img(class='avatar', src='{{currentAvatar}}')
+    img(class='avatar', ng-src='https://avatars.githubusercontent.com/u/{{avatar}}')
   md-input-container(flex)
     label Submit your help request here
     input(ng-model='requestInput' ng-enter="addRequest(requestInput)" type='text')
