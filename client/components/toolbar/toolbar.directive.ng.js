@@ -1,10 +1,33 @@
 'use strict'
 
 angular.module('refactorQApp')
-.directive('toolbar', function() {
-  return {
-    restrict: 'AE',
-    templateUrl: 'client/components/toolbar/toolbar.view.html',
-    replace: true
-  };
-});
+  .directive('toolbar', function($timeout, $mdSidenav, $mdUtil) {
+    return {
+      restrict: 'AE',
+      templateUrl: 'client/components/toolbar/toolbar.view.html',
+      replace: true,
+      link: function(scope, elem, attrs) {
+        function buildToggler(navID) {
+          var debounceFn = $mdUtil.debounce(function() {
+            $mdSidenav(navID)
+              .toggle()
+              .then(function() {
+                console.log("toggle " + navID + " is done");
+              });
+          }, 200);
+          return debounceFn;
+        }
+        scope.toggleRight = buildToggler('right');
+        scope.toggle = function() {
+          console.log('toggle!');
+        }
+
+        scope.close = function () {
+          $mdSidenav('right').close()
+            .then(function () {
+              console.log("close RIGHT is done");
+            });
+        };
+      }
+    };
+  });

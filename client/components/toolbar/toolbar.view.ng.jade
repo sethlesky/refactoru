@@ -7,7 +7,6 @@ md-toolbar.toolbar(layout='row', layout-align='start center', layout-padding='')
     input(ng-model='search', type='text')
   .navbar-right
     blaze-template(name="loginButtons")
-    md-button(class="md-icon-button")
-      md-tooltip(md-visible="demo.showTooltip") Admin Settings
+    md-button(class="md-icon-button" ng-click="toggleRight()")
       md-icon(md-font-set="material-icons") settings_applications
 

@@ -19,4 +19,14 @@
                   | In Progress
                 md-option(value=2)
                   | Closed
+      md-sidenav.md-sidenav-right.md-whiteframe-z2(md-component-id='right')
+          md-toolbar.md-theme-light
+              h1.md-toolbar-tools Admin Settings
+            md-content(layout-padding='')
+              form
+                md-input-container
+                  label(for='testInput') Add Admin
+                  input#testInput(type='text', ng-model='data', md-autofocus='')
+              md-button.md-primary(ng-click='close()')
+                | Close Sidenav Right
   span(flex)
