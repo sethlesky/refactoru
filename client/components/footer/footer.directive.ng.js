@@ -18,6 +18,8 @@ angular.module('refactorQApp')
           'status'    : 0
         });
         scope.requestInput = '';
+
+        angular.element(".queueContainer").animate({scrollTop: angular.element("#mainContainer").height()}, "slow");
       }
     }
   };
