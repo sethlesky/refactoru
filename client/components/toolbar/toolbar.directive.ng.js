@@ -17,10 +17,8 @@ angular.module('refactorQApp')
           }, 200);
           return debounceFn;
         }
+
         scope.toggleRight = buildToggler('right');
-        scope.toggle = function() {
-          console.log('toggle!');
-        }
 
         scope.close = function () {
           $mdSidenav('right').close()

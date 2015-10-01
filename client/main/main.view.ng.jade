@@ -25,8 +25,8 @@
             md-content(layout-padding='')
               form
                 md-input-container
-                  label(for='testInput') Add Admin
-                  input#testInput(type='text', ng-model='data', md-autofocus='')
+                  label(for='addAdmin') Add Admin
+                  input#addAdmin(type='text', ng-model='adminInput', md-autofocus='', ng-enter="addAdmin()")
               md-button.md-primary(ng-click='close()')
                 | Close Sidenav Right
   span(flex)

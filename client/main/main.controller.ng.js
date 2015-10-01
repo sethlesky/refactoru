@@ -1,8 +1,11 @@
 'use strict'
 
 angular.module('refactorQApp')
-.controller('MainCtrl', function($scope, $meteor, requestQueue) {
+  .controller('MainCtrl', function($scope, $meteor, requestQueue) {
+    $scope.requests = requestQueue.getQueue();
 
-  $scope.requests = requestQueue.getQueue();
-  // requets.remove()
-});
+    $scope.addAdmin = function() {
+      $scope.adminInput = '';
+    }
+
+  });
