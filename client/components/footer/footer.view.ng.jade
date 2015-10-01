@@ -2,7 +2,7 @@ md-toolbar.toolbar(ng-show='githubId', layout='row', layout-align='start center'
   .navbar-left(layout='row', layout-align='center center')
     img(class='avatar', ng-src='https://avatars.githubusercontent.com/u/{{githubId}}')
   md-input-container(flex)
-    label Submit your help request here
+    label Please submit your request for help in as much detail as possible
     input(ng-model='requestInput' ng-enter="addRequest(requestInput)" type='text')
   .navbar-right
     md-icon(md-font-set="material-icons") keyboard_return
