@@ -26,7 +26,8 @@
               form
                 md-input-container
                   label(for='addAdmin') Add Admin
-                  input#addAdmin(type='text', ng-model='adminInput', md-autofocus='', ng-enter="addAdmin()")
-              md-button.md-primary(ng-click='close()')
-                | Close Sidenav Right
+                  input#addAdmin(type='text', ng-model='adminInput', md-autofocus='', ng-enter="addAdmin(username)")
+              div(ng-repeat="admin in admins")
+                img(class="avatar" ng-src="{{admin.avatar}}")
+                span(class="username") {{admin.login}} ({{admin.name}})
   span(flex)
