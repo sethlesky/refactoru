@@ -30,4 +30,7 @@
               div(ng-repeat="admin in admins")
                 img(class="avatar" ng-src="{{admin.avatar}}")
                 span(class="username") {{admin.login}} ({{admin.name}})
+              md-button(class="md-icon-button" ng-click="clearRequests()")
+                md-icon(md-font-set="material-icons") delete
+                md-tooltip Clear All Requests
   span(flex)

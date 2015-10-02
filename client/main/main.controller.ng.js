@@ -23,4 +23,8 @@ angular.module('refactorQApp')
       $scope.adminInput = '';
     }
 
+    $scope.clearRequests = function() {
+      $scope.requests.remove();
+    }
+
   });
