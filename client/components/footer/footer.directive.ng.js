@@ -12,7 +12,7 @@ angular.module('refactorQApp')
       scope.addRequest = function(requestInput){
         scope.requests.save({
           'uid'       : Meteor.user().services.github.id,
-          'name'      : Meteor.user().profile.name,
+          'name'      : Meteor.user().profile.name || Meteor.user().services.github.username,
           'time'      : new Date(),
           'content'   : scope.requestInput,
           'status'    : 0
