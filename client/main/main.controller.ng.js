@@ -8,19 +8,24 @@ angular.module('refactorQApp')
     $scope.addAdmin = function() {
 
       $http.get('https://api.github.com/users/' + $scope.adminInput).then(function(response) {
-        console.log(response);
-        $scope.admins.push({
-          name: response.data.name,
-          login: response.data.login,
-          avatar: response.data.avatar_url,
-          uid: response.data.id
-        });
+        var user = Meteor.users.findOne({'services.github.username': $scope.adminInput});
+        if (user) {
+          $scope.admins.push({
+            name: response.data.name,
+            login: response.data.login,
+            avatar: response.data.avatar_url,
+            uid: response.data.id
+          });
+        } else {
+          alert('That user cannot be found, please check their username and make sure they have already logged in.');
+        }
+        $scope.adminInput = '';
 
       }, function(err) {
         console.log(err);
+        $scope.adminInput = '';
       });
 
-      $scope.adminInput = '';
     }
 
     $scope.clearRequests = function() {
