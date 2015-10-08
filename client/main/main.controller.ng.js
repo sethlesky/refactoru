@@ -3,6 +3,7 @@
 angular.module('refactorQApp')
   .controller('MainCtrl', function($scope, $meteor, requestQueue, $http) {
     $scope.requests = requestQueue.getQueue();
+    // $scope.admins = Roles.getUsersInRole('admin').fetch();
     $scope.admins = [];
 
     $scope.addAdmin = function() {
@@ -16,6 +17,7 @@ angular.module('refactorQApp')
             avatar: response.data.avatar_url,
             uid: response.data.id
           });
+          Meteor.call('addAdmin', user._id);
         } else {
           alert('That user cannot be found, please check their username and make sure they have already logged in.');
         }
