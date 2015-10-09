@@ -3,26 +3,35 @@
 angular.module('refactorQApp')
   .controller('MainCtrl', function($scope, $meteor, requestQueue, $http) {
     $scope.requests = requestQueue.getQueue();
-    // $scope.admins = Roles.getUsersInRole('admin').fetch();
     $scope.admins = [];
 
-    $scope.addAdmin = function() {
-
-      $http.get('https://api.github.com/users/' + $scope.adminInput).then(function(response) {
-        var user = Meteor.users.findOne({'services.github.username': $scope.adminInput});
-        if (user) {
-          $scope.admins.push({
-            name: response.data.name,
-            login: response.data.login,
-            avatar: response.data.avatar_url,
-            uid: response.data.id
+    // show list of current admins
+    Meteor.call('getAdmins', function(err, admins) {
+      admins.forEach(function(admin) {
+        // console.log(admin);
+        $http.get('https://api.github.com/users/' + admin.services.github.username)
+          .then(function(response) {
+            $scope.admins.push({
+              name: response.data.name,
+              login: response.data.login,
+              avatar: response.data.avatar_url,
+              gid: response.data.id,
+              uid: admin._id
+            });
           });
-          Meteor.call('addAdmin', user._id);
-        } else {
-          alert('That user cannot be found, please check their username and make sure they have already logged in.');
-        }
-        $scope.adminInput = '';
+      });
+    });
 
+    $scope.addAdmin = function() {
+      $http.get('https://api.github.com/users/' + $scope.adminInput).then(function(response) {
+        Meteor.call('getUser', $scope.adminInput, function(err, user) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          Meteor.call('addAdmin', user._id);
+        });
+        $scope.adminInput = '';
       }, function(err) {
         console.log(err);
         $scope.adminInput = '';
@@ -32,6 +41,11 @@ angular.module('refactorQApp')
 
     $scope.clearRequests = function() {
       $scope.requests.remove();
+    }
+
+    $scope.removeAdmin = function(admin) {
+      console.log(admin);
+      Meteor.call('removeAdmin', admin.uid);
     }
 
   });

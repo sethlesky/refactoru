@@ -29,8 +29,12 @@
                   input#addAdmin(type='text', ng-model='adminInput', md-autofocus='', ng-enter="addAdmin(username)")
               div(ng-repeat="admin in admins")
                 img(class="avatar" ng-src="{{admin.avatar}}")
-                span(class="username") {{admin.login}} ({{admin.name}})
-              md-button(class="md-icon-button" ng-click="clearRequests()")
-                md-icon(md-font-set="material-icons") delete
+                span(class="username") {{admin.name}}
+                md-button(class="md-icon-button" ng-click="removeAdmin(admin)")
+                  md-icon(md-font-set="material-icons") delete
+                  md-tooltip Remove Admin
+
+              md-button(class="clearRequests md-icon-button" ng-click="clearRequests()")
+                md-icon(md-font-set="material-icons") refresh
                 md-tooltip Clear All Requests
   span(flex)
