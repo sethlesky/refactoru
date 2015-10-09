@@ -12,7 +12,7 @@
           .md-actions(layout='row', layout-align='end center')
             md-input-container(class="status")
               label Status
-              md-select(ng-model='request.status' ng-disabled="request.uid != githubId")
+              md-select(ng-model='request.status' ng-disabled="!adminOrOwner(request)")
                 md-option(value=0)
                   | Open
                 md-option(value=1)

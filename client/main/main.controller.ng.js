@@ -58,4 +58,8 @@ angular.module('refactorQApp')
       });
     }
 
+    $scope.adminOrOwner = function(request) {
+      return (request.uid == Meteor.user().services.github.id) || Roles.userIsInRole(Meteor.userId(), ['admin']);
+    }
+
   });
