@@ -26,6 +26,11 @@ angular.module('refactorQApp')
               console.log("close RIGHT is done");
             });
         };
+
+        scope.isAdmin = function() {
+          console.log(Roles.userIsInRole(Meteor.userId(), ['admin']));
+          return Roles.userIsInRole(Meteor.userId(), ['admin']);
+        }
       }
     };
   });
