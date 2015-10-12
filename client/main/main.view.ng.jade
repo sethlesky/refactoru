@@ -8,7 +8,11 @@
             img(ng-src="https://avatars.githubusercontent.com/u/{{request.uid}}" class="avatar")
             span(class="time" am-time-ago="request.time")
             span(class="username") {{request.name}}
-            p {{request.content}}
+            div(layout="row")
+              div(flex="50")
+                p {{request.content}}
+              div(flex="50")
+                img(class="giphy" ng-src="{{request.giphy}}")
           .md-actions(layout='row', layout-align='end center')
             md-input-container(class="status")
               label Status

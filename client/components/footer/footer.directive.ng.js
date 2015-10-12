@@ -33,12 +33,18 @@ angular.module('refactorQApp')
       }
 
       scope.emotions = [
+        "Awkward",
+        "Bored",
+        "Drunk",
+        "Hungry",
+        "Mind Blown",
+        "Angry",
+        "Disappointed",
+        "Embarassed",
+        "Excited",
+        "Frustrated",
         "Happy",
-        "Sad",
-        "Annoyed",
-        "Relaxed",
-        "Hopeful",
-        "Hangry"
+        "High"
       ];
     }
   };
