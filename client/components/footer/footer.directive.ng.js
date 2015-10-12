@@ -42,6 +42,7 @@ angular.module('refactorQApp')
         "Disappointed",
         "Embarassed",
         "Excited",
+        "Funny",
         "Frustrated",
         "Happy",
         "Stoned",
