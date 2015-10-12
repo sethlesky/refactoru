@@ -44,7 +44,21 @@ angular.module('refactorQApp')
         "Excited",
         "Frustrated",
         "Happy",
-        "High"
+        "Stoned",
+        "Inspired",
+        "Nervous",
+        "Pain",
+        "Relaxed",
+        "Sad",
+        "Sassy",
+        "Scared",
+        "Shocked",
+        "Stressed",
+        "Surpised",
+        "Tired",
+        "Interested",
+        "Curious",
+        "Confused"
       ];
     }
   };
