@@ -10,17 +10,36 @@ angular.module('refactorQApp')
       $meteor.session('githubId').bind(scope, 'githubId');
       scope.requests = requestQueue.getQueue();
       scope.addRequest = function(requestInput){
-        scope.requests.save({
-          'uid'       : Meteor.user().services.github.id,
-          'name'      : Meteor.user().profile.name || Meteor.user().services.github.username,
-          'time'      : new Date(),
-          'content'   : scope.requestInput,
-          'status'    : 0
-        });
-        scope.requestInput = '';
+        $http.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + scope.emotion)
+          .success(function(response) {
+            console.log(scope.emotion,response.data);
 
-        angular.element("#uiViewContainer").animate({scrollTop: angular.element("#viewContainer").height()}, "slow");
+            scope.requests.save({
+              'uid'       : Meteor.user().services.github.id,
+              'name'      : Meteor.user().profile.name || Meteor.user().services.github.username,
+              'time'      : new Date(),
+              'content'   : scope.requestInput,
+              'status'    : 0,
+              'emotion'   : scope.emotion,
+              'giphy'     : response.data.image_url
+            });
+            scope.requestInput = '';
+            scope.emotion = null;
+            angular.element("#uiViewContainer").animate({scrollTop: angular.element("#viewContainer").height()}, "slow");
+          })
+          .catch(function(response) {
+            console.log('error', response)
+          });
       }
+
+      scope.emotions = [
+        "Happy",
+        "Sad",
+        "Annoyed",
+        "Relaxed",
+        "Hopeful",
+        "Hangry"
+      ];
     }
   };
 });

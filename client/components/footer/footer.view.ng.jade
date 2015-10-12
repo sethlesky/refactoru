@@ -1,9 +1,14 @@
 md-toolbar.toolbar(ng-show='githubId', layout='row', layout-align='start center', layout-padding='')
   .navbar-left(layout='row', layout-align='center center')
     img(class='avatar', ng-src='https://avatars.githubusercontent.com/u/{{githubId}}')
-  md-input-container(flex)
+  md-input-container(class='emotion')
+    label Emotion
+    md-select(ng-model='emotion')
+      md-option(ng-repeat='emotion in emotions', value='{{emotion}}') {{emotion}}
+  md-input-container(class="request-input" flex)
     label Please submit your request for help in as much detail as possible
     input(ng-model='requestInput' ng-enter="addRequest(requestInput)" type='text')
+
   .navbar-right
     md-icon(md-font-set="material-icons") keyboard_return
 
