@@ -9,9 +9,9 @@
             span(class="time" am-time-ago="request.time")
             span(class="username") {{request.name}}
             div(layout="row")
-              div(flex="50")
+              div(flex)
                 p {{request.content}}
-              div(flex="50")
+              div(flex="50" hide show-gt-sm)
                 img(class="giphy" ng-src="{{request.giphy}}")
           .md-actions(layout='row', layout-align='end center')
             md-input-container(class="status")
