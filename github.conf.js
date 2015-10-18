@@ -1,6 +1,7 @@
 if (Meteor.isClient) {
 
   Meteor.subscribe('requests');
+  Meteor.subscribe('notifications');
 
   Meteor.subscribe("userData", {
     onReady: function () {

@@ -8,6 +8,10 @@ angular.module('refactorQApp', [
 
 onReady = function() {
   angular.bootstrap(document, ['refactorQApp']);
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+
 };
 
 if(Meteor.isCordova) {

@@ -1,9 +1,10 @@
 'use strict'
 
 angular.module('refactorQApp')
-  .controller('MainCtrl', function($scope, $meteor, requestQueue, $http) {
+  .controller('MainCtrl', function($scope, $meteor, requestQueue, $http, notifier) {
     $scope.requests = requestQueue.getQueue();
     $scope.admins = [];
+    $scope.notifications = notifier.getNotifications();
 
     // show list of current admins
     var getAdmins = function() {
@@ -26,6 +27,16 @@ angular.module('refactorQApp')
     }
 
     getAdmins();
+
+    $scope.$watchCollection(
+        'notifications',
+        function( newValue, oldValue ) {
+            if ($scope.notifications.length > 0) {
+              console.log('notifying', $scope.notifications.length);
+              notifier.notifyAdmins();
+            }
+        }
+    );
 
     $scope.addAdmin = function() {
       $http.get('https://api.github.com/users/' + $scope.adminInput).then(function(response) {

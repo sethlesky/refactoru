@@ -28,7 +28,6 @@ angular.module('refactorQApp')
         };
 
         scope.isAdmin = function() {
-          console.log(Roles.userIsInRole(Meteor.userId(), ['admin']));
           return Roles.userIsInRole(Meteor.userId(), ['admin']);
         }
       }

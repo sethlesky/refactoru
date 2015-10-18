@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('refactorQApp')
-.directive('footer', function($meteor, $http, requestQueue) {
+.directive('footer', function($meteor, $http, requestQueue, notifier) {
   return {
     restrict: 'EA',
     templateUrl: 'client/components/footer/footer.view.html',
@@ -26,6 +26,9 @@ angular.module('refactorQApp')
             scope.requestInput = '';
             scope.emotion = null;
             angular.element("#uiViewContainer").animate({scrollTop: angular.element("#viewContainer").height()}, "slow");
+            // send notifications to admins and reset array
+            notifier.addNotification('another note');
+
           })
           .catch(function(response) {
             console.log('error', response)
