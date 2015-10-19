@@ -8,7 +8,7 @@ angular.module('refactorQApp')
     return Notifications.find({});
   });
 
-  var notifyMe = function() {
+  var notifyMe = function(gitid, name) {
     if (!Notification) {
       alert('Desktop notifications not available in your browser. Try Chromium.');
       return;
@@ -17,13 +17,13 @@ angular.module('refactorQApp')
     if (Notification.permission !== "granted")
       Notification.requestPermission();
     else {
-      var notification = new Notification('Notification title', {
-        icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-        body: "Hey there! You've been notified!",
+      var notification = new Notification('RefactorQ', {
+        icon: 'https://avatars.githubusercontent.com/u/' + gitid,
+        body: name + " has recently made a help request",
       });
 
       notification.onclick = function () {
-        window.open("http://stackoverflow.com/a/13328397/1269037");
+        window.open("http://refactorq.meteor.com");
       };
     }
   }
@@ -35,6 +35,7 @@ angular.module('refactorQApp')
       notifications.save({
         'uid'   : Meteor.user().services.github.id,
         'name'  : Meteor.user().profile.name || Meteor.user().services.github.username,
+        'avatar': 'https://avatars.githubusercontent.com/u/' + Meteor.user().services.github.id
       });
     },
     notifyAdmins: function() {
@@ -42,11 +43,7 @@ angular.module('refactorQApp')
       // notifications = [];
       if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
         console.log('about to call notify');
-        // notifyMe();
-        new Notification('Notification title', {
-                icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-                body: "Hey there! You've been notified!",
-              });
+        notifyMe(Meteor.user().services.github.id, Meteor.user().profile.name || Meteor.user().services.github.username);
 
         $timeout(function() {
           console.log('removing all notes');
