@@ -23,12 +23,10 @@ angular.module('refactorQApp')
               'emotion'   : scope.emotion,
               'giphy'     : response.data.image_url
             });
+            notifier.addNotification(scope.requestInput);
             scope.requestInput = '';
             scope.emotion = null;
             angular.element("#uiViewContainer").animate({scrollTop: angular.element("#viewContainer").height()}, "slow");
-            // send notifications to admins and reset array
-            notifier.addNotification('another note');
-
           })
           .catch(function(response) {
             console.log('error', response)
