@@ -43,7 +43,8 @@ angular.module('refactorQApp')
       // notifications = [];
       if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
         console.log('about to call notify');
-        notifyMe(Meteor.user().services.github.id, Meteor.user().profile.name || Meteor.user().services.github.username);
+        // notifyMe(Meteor.user().services.github.id, Meteor.user().profile.name || Meteor.user().services.github.username);
+        notifyMe(notifications[0].uid, notifications[0].name);
 
         $timeout(function() {
           console.log('removing all notes');
