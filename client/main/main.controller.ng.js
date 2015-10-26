@@ -12,7 +12,7 @@ angular.module('refactorQApp')
         $scope.admins = [];
         admins.forEach(function(admin) {
           // console.log(admin);
-          $http.get('https://api.github.com/users/' + admin.services.github.username)
+          $http.get('https://api.github.com/users/' + admin.services.github.username + "?access_token=" + Meteor.user().services.github.accessToken)
             .then(function(response) {
               $scope.admins.push({
                 name: response.data.name,
@@ -39,10 +39,13 @@ angular.module('refactorQApp')
     );
 
     $scope.addAdmin = function() {
-      $http.get('https://api.github.com/users/' + $scope.adminInput).then(function(response) {
+      $http.get('https://api.github.com/users/' + $scope.adminInput + "?access_token=" + Meteor.user().services.github.accessToken).then(function(response) {
         Meteor.call('getUser', $scope.adminInput, function(err, user) {
-          if (err) {
+          if (err || !user) {
             console.log(err);
+            if (!user) {
+              alert('User needs to login once before becoming an admin');
+            }
             return;
           }
           Meteor.call('addAdmin', user._id, function() {
