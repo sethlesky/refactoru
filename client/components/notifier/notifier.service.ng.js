@@ -23,7 +23,7 @@ angular.module('refactorQApp')
       });
 
       notification.onclick = function () {
-        window.open("http://refactorq.meteor.com");
+         window.focus();
       };
     }
   }
