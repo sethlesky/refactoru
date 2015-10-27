@@ -2,7 +2,9 @@
   span(flex)
   div(layout='column' flex="100")
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
-      md-content.md-padding(flex="100")
+      span(flex)
+        | List of admins here
+      md-content.md-padding(flex="none" style="max-width: 960px;")
         md-card(ng-repeat="request in requests | filter:search | filter:{status:'!2'}")
           md-card-content
             img(ng-src="https://avatars.githubusercontent.com/u/{{request.uid}}" class="avatar")
@@ -41,4 +43,6 @@
               md-button(class="clearRequests md-icon-button" ng-click="clearRequests()")
                 md-icon(md-font-set="material-icons") refresh
                 md-tooltip Clear All Requests
+      span(flex)
+        | List of students here
   span(flex)

@@ -31,3 +31,5 @@ accounts-github
 service-configuration
 jasonaibrahim:angular-moment
 alanning:roles
+tmeasday:presence
+check
