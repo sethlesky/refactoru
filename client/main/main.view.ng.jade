@@ -4,7 +4,7 @@
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
       span(flex)
         | List of admins here
-      md-content.md-padding(flex="none" style="max-width: 960px;")
+      md-content.md-padding(style="max-width: 960px;")
         md-card(ng-repeat="request in requests | filter:search | filter:{status:'!2'}")
           md-card-content
             img(ng-src="https://avatars.githubusercontent.com/u/{{request.uid}}" class="avatar")
