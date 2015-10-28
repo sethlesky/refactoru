@@ -3,8 +3,14 @@ if (Meteor.isClient) {
   Meteor.subscribe('requests');
   Meteor.subscribe('notifications');
   Meteor.subscribe('userPresence');
-  onlineUsers = new Meteor.Collection("onlineUsers");
-  // onlineUsers = new Meteor.Collection("onlinePresence");
+  OnlineUsers = new Meteor.Collection("onlineUsers");
+
+// Meteor.presences.find({}, {transform:function(doc) {
+//         var user = Meteor.users.findOne({_id:doc.userId});
+//         if(user) doc.profile = user.profile;
+//         return doc;
+//     }
+// });
 
   Meteor.subscribe("userData", {
     onReady: function () {

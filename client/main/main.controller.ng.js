@@ -6,39 +6,9 @@ angular.module('refactorQApp')
     $scope.admins = [];
     $scope.notifications = notifier.getNotifications();
 
-    $scope.presences = $meteor.collection(function() {
-      return Meteor.presences.find({});
+    $scope.onlineUsers = $meteor.collection(function() {
+      return OnlineUsers.find({});
     });
-
-    // below works BUT feels like a HACK
-
-    // $scope.$watchCollection(
-    //     'presences',
-    //     function( newValue, oldValue ) {
-    //       console.log(newValue, oldValue);
-    //       var out = [];
-    //       $scope.presences.forEach(function(item) {
-    //         console.log(item);
-    //         item.profile = 'okay'; // Meteor.call() here
-    //         out.push(item);
-    //       })
-    //       $scope.online = out;
-    //     }
-    // );
-
-      // return Meteor.presences.find({}, {transform:function(doc) {
-      //         // Meteor.call('getUserProfile', doc.userId, function(err, user) {
-      //         //   console.log(user)
-      //         //   if(user) doc.profile = user.profile;
-      //         //   return doc;
-      //         // })
-      //         // var user = Meteor.users.findOne({_id:doc.userId});
-      //         // if(user) doc.profile = user.profile;
-      //         // return doc;
-      //     }
-      // });
-
-    // Meteor.call('getUserProfile', 'ZshRDFJ6AE5srdoZK', function(err, item) {console.log(err,item)})
 
     // show list of current admins
     var getAdmins = function() {
