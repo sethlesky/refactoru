@@ -2,11 +2,11 @@
   span(flex)
   div(layout='column' flex="100")
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
-      span(flex)
-        h3 Instructors Online
-        span(ng-repeat="user in onlineUsers")
-          img(ng-src="https://avatars.githubusercontent.com/u/{{user.services.github.id}}" class="avatar")
-      md-content.md-padding(style="max-width: 960px;")
+      span(flex="10" style="text-align: center;")
+        h4 ONLINE
+        div(ng-repeat="user in onlineUsers")
+          img(ng-src="https://avatars.githubusercontent.com/u/{{user.services.github.id}}" class="avatar online")
+      md-content.md-padding(flex)
         md-card(ng-repeat="request in requests | filter:search | filter:{status:'!2'}")
           md-card-content
             img(ng-src="https://avatars.githubusercontent.com/u/{{request.uid}}" class="avatar")
@@ -45,6 +45,4 @@
               md-button(class="clearRequests md-icon-button" ng-click="clearRequests()")
                 md-icon(md-font-set="material-icons") refresh
                 md-tooltip Clear All Requests
-      span(flex)
-        h3 Students Online
   span(flex)
