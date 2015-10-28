@@ -5,13 +5,6 @@ if (Meteor.isClient) {
   Meteor.subscribe('userPresence');
   OnlineUsers = new Meteor.Collection("onlineUsers");
 
-// Meteor.presences.find({}, {transform:function(doc) {
-//         var user = Meteor.users.findOne({_id:doc.userId});
-//         if(user) doc.profile = user.profile;
-//         return doc;
-//     }
-// });
-
   Meteor.subscribe("userData", {
     onReady: function () {
       Tracker.autorun(function(){

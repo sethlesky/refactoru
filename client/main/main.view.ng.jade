@@ -4,6 +4,8 @@
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
       span(flex)
         h3 Instructors Online
+        span(ng-repeat="user in onlineUsers")
+          img(ng-src="https://avatars.githubusercontent.com/u/{{user.services.github.id}}" class="avatar")
       md-content.md-padding(style="max-width: 960px;")
         md-card(ng-repeat="request in requests | filter:search | filter:{status:'!2'}")
           md-card-content
