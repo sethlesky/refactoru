@@ -20,5 +20,9 @@ Meteor.methods({
   removeAdmin: function(uid) {
     console.log('removing', uid);
     Roles.setUserRoles(uid, []);
+  },
+  getUserProfile: function(uid) {
+    console.log('getting presence info', uid);
+    return Meteor.users.findOne({'_id': uid});
   }
 });

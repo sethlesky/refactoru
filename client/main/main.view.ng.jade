@@ -3,7 +3,7 @@
   div(layout='column' flex="100")
     div(layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;")
       span(flex)
-        | List of admins here
+        h3 Instructors Online
       md-content.md-padding(style="max-width: 960px;")
         md-card(ng-repeat="request in requests | filter:search | filter:{status:'!2'}")
           md-card-content
@@ -44,5 +44,5 @@
                 md-icon(md-font-set="material-icons") refresh
                 md-tooltip Clear All Requests
       span(flex)
-        | List of students here
+        h3 Students Online
   span(flex)

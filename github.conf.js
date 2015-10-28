@@ -3,6 +3,8 @@ if (Meteor.isClient) {
   Meteor.subscribe('requests');
   Meteor.subscribe('notifications');
   Meteor.subscribe('userPresence');
+  onlineUsers = new Meteor.Collection("onlineUsers");
+  // onlineUsers = new Meteor.Collection("onlinePresence");
 
   Meteor.subscribe("userData", {
     onReady: function () {
