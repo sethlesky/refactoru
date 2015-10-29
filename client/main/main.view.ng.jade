@@ -5,7 +5,7 @@
       span(flex="10" style="text-align: center;")
         h4 ONLINE
         div(ng-repeat="user in onlineUsers")
-          img(ng-src="https://avatars.githubusercontent.com/u/{{user.services.github.id}}" class="avatar online")
+          img(ng-src="https://avatars.githubusercontent.com/u/{{user.services.github.id}}" class="avatar online" title="{{user.profile.name}}")
       md-content.md-padding(flex)
         md-card(ng-repeat="request in requests | filter:search | filter:{status:'!2'}")
           md-card-content
