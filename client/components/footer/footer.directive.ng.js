@@ -13,6 +13,8 @@ angular.module('refactorQApp')
         $http.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + scope.emotion)
           .success(function(response) {
             console.log(scope.emotion,response.data);
+            if (!scope.emotion)
+              response.data.image_url = '';
 
             scope.requests.save({
               'uid'       : Meteor.user().services.github.id,
