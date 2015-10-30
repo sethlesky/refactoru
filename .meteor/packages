@@ -31,6 +31,6 @@ accounts-github
 service-configuration
 jasonaibrahim:angular-moment
 alanning:roles
-tmeasday:presence
 check
 reywood:publish-composite
+mizzao:user-status

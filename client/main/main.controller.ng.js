@@ -7,7 +7,7 @@ angular.module('refactorQApp')
     $scope.notifications = notifier.getNotifications();
 
     $scope.onlineUsers = $meteor.collection(function() {
-      return OnlineUsers.find({});
+      return Meteor.users.find({});
     });
 
     // show list of current admins
