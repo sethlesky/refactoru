@@ -9,6 +9,8 @@ angular.module('refactorQApp')
     link: function(scope, elem, attrs) {
       $meteor.session('githubId').bind(scope, 'githubId');
       scope.requests = requestQueue.getQueue();
+      scope.floobitsURL = '';
+
       scope.addRequest = function(requestInput){
         $http.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + scope.emotion)
           .success(function(response) {
@@ -16,17 +18,29 @@ angular.module('refactorQApp')
             if (!scope.emotion)
               response.data.image_url = '';
 
+            // check for floobits url
+            var content  = '';
+            scope.requestInput.split(' ').forEach(function(word) {
+              if (word.match('floobits.com')) {
+                scope.floobitsURL = word;
+              } else {
+                content += word + ' ';
+              }
+            })
+
             scope.requests.save({
               'uid'       : Meteor.user().services.github.id,
               'name'      : Meteor.user().profile.name || Meteor.user().services.github.username,
               'time'      : new Date(),
-              'content'   : scope.requestInput,
+              'content'   : content,
               'status'    : 0,
               'emotion'   : scope.emotion,
-              'giphy'     : response.data.image_url
+              'giphy'     : response.data.image_url,
+              'floobits'  : scope.floobitsURL || ''
             });
             notifier.addNotification(scope.requestInput);
             scope.requestInput = '';
+            scope.floobitsURL = '';
             scope.emotion = null;
             angular.element("#uiViewContainer").animate({scrollTop: angular.element("#viewContainer").height()}, "slow");
           })
