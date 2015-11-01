@@ -36,7 +36,8 @@ angular.module('refactorQApp')
               'status'    : 0,
               'emotion'   : scope.emotion,
               'giphy'     : response.data.image_url,
-              'floobits'  : scope.floobitsURL || ''
+              'floobits'  : scope.floobitsURL || '',
+              'users'     : []
             });
             notifier.addNotification(scope.requestInput);
             scope.requestInput = '';
@@ -52,28 +53,28 @@ angular.module('refactorQApp')
       scope.emotions = [
         "Awkward",
         "Bored",
-        "Drunk",
+        "Excited",
         "Hungry",
         "Mind Blown",
+        "Sad",
+        "Frustrated",
+        "Tired",
+        "Inspired",
         "Angry",
         "Disappointed",
         "Embarassed",
-        "Excited",
         "Funny",
-        "Frustrated",
         "Happy",
         "Stoned",
-        "Inspired",
         "Nervous",
         "Pain",
         "Relaxed",
-        "Sad",
         "Sassy",
+        "Drunk",
         "Scared",
         "Shocked",
         "Stressed",
         "Surpised",
-        "Tired",
         "Interested",
         "Curious",
         "Confused"

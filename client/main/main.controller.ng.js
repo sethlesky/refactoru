@@ -76,6 +76,24 @@ angular.module('refactorQApp')
       });
     }
 
+    $scope.joinRequest = function(request) {
+      var found = false;
+      request.users.forEach(function(user) {
+        if (user.userId == Meteor.userId()) {
+          found = true;
+          console.log('found dont add');
+        }
+      })
+
+      if (!found) {
+        request.users.push({
+          userId    : Meteor.userId(),
+          name      : Meteor.user().profile.name,
+          github    : Meteor.user().services.github.id
+        });
+      }
+    }
+
     $scope.adminOrOwner = function(request) {
       if (Meteor.user() && Meteor.user().services && Meteor.user().services.github) {
         return (request.uid == Meteor.user().services.github.id)

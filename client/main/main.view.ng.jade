@@ -16,10 +16,13 @@
               div(flex style="padding-right: 20px")
                 p {{request.content}}
                 a(href='{{request.floobits}}' ng-show="request.floobits" target="_blank")
-                  img(alt='Floobits Status', src='https://floobits.com/sethlesky/chatroom.svg')
+                  img(alt='Floobits Status', src='https://floobits.com/sethlesky/chatroom.svg' ng-show="adminOrOwner(request)")
               div(flex="35" hide show-gt-sm)
                 img(class="giphy" ng-src="{{request.giphy}}")
-          .md-actions(layout='row', layout-align='end center')
+          .md-actions(layout='row', layout-align='space-between center')
+            md-button(class="md-icon-button" ng-click="joinRequest(request)")
+              md-icon(md-font-set="material-icons") add_box
+              md-tooltip Join this request
             md-input-container(class="status")
               label Status
               md-select(ng-model='request.status' ng-disabled="!adminOrOwner(request)")
