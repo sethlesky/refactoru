@@ -17,7 +17,7 @@
                 p {{request.content}}
                 a(href='{{request.floobits}}' ng-show="request.floobits" target="_blank")
                   img(alt='Floobits Status', src='https://floobits.com/sethlesky/chatroom.svg' ng-show="adminOrOwner(request)")
-              div(flex="35" hide show-gt-sm)
+              div(flex="35" hide show-gt-sm style="text-align: right;")
                 img(class="giphy" ng-src="{{request.giphy}}")
           .md-actions(layout='row', layout-align='space-between center')
             span(style="margin-left: 10px;")
@@ -31,7 +31,7 @@
                 img(ng-repeat="user in request.users" ng-src="https://avatars.githubusercontent.com/u/{{user.github}}" class="avatar square" title="{{user.name}}")
             md-input-container(class="status")
               label Status
-              md-select(ng-model='request.status' ng-disabled="!adminOrOwner(request)")
+              md-select(ng-model='request.status' ng-disabled="!adminOrOwner(request)" ng-change="statusChanged(request)")
                 md-option(value=0)
                   | Open
                 md-option(value=1)

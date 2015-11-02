@@ -108,4 +108,20 @@ angular.module('refactorQApp')
       }
     }
 
+    $scope.statusChanged = function(request) {
+      // console.log('status', status);
+      switch(request.status) {
+        case "0":
+          console.log(0);
+          break;
+        case "1":
+          console.log(1);
+          $scope.joinRequest(request);
+          break;
+        case "2":
+          console.log(2);
+          break
+      }
+    }
+
   });
