@@ -102,4 +102,10 @@ angular.module('refactorQApp')
       return false;
     }
 
+    $scope.isRequestOwner = function(request) {
+      if (Meteor.user() && Meteor.user().services && Meteor.user().services.github) {
+        return (request.uid == Meteor.user().services.github.id);
+      }
+    }
+
   });

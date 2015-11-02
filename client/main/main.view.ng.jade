@@ -20,9 +20,15 @@
               div(flex="35" hide show-gt-sm)
                 img(class="giphy" ng-src="{{request.giphy}}")
           .md-actions(layout='row', layout-align='space-between center')
-            md-button(class="md-icon-button" ng-click="joinRequest(request)")
-              md-icon(md-font-set="material-icons") add_box
-              md-tooltip Join this request
+            span(style="margin-left: 10px;")
+              md-button(class="md-icon-button" ng-click="joinRequest(request)" ng-show="!isRequestOwner(request)")
+                md-icon(md-font-set="material-icons") add_box
+                md-tooltip Join this request
+              //- md-button(class="md-icon-button" ng-click="joinRequest(request)")
+              //-   md-icon(md-font-set="material-icons") remove_circle
+              //-   md-tooltip Remove this request
+              span.joiners
+                img(ng-repeat="user in request.users" ng-src="https://avatars.githubusercontent.com/u/{{user.github}}" class="avatar square" title="{{user.name}}")
             md-input-container(class="status")
               label Status
               md-select(ng-model='request.status' ng-disabled="!adminOrOwner(request)")
