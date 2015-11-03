@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('refactorQApp')
-  .controller('MainCtrl', function($scope, $meteor, requestQueue, $http, notifier) {
+  .controller('MainCtrl', function($scope, $meteor, requestQueue, $http, notifier, $mdDialog) {
     $scope.requests = requestQueue.getQueue();
     $scope.admins = [];
     $scope.notifications = notifier.getNotifications();
@@ -124,4 +124,58 @@ angular.module('refactorQApp')
       }
     }
 
+    $scope.items = [1,2,3];
+    var alert;
+    $scope.showDialog = function($event) {
+      var parentEl = angular.element(document.querySelector('md-content'));
+      alert = $mdDialog.alert({
+        parent: parentEl,
+        targetEvent: $event,
+        template:
+          '<md-dialog aria-label="Sample Dialog" style="min-width: 400px;">' +
+          '    <md-toolbar> ' +
+          '      <div class="md-toolbar-tools">' +
+          '        <h2>Your feedback helps us improve </h2>' +
+          '        <span flex></span>' +
+          '      </div>'+
+          '    </md-toolbar>'+
+          '  <md-content>'+
+          ' ' +
+          '  </md-content>' +
+          '  <div class="md-actions">' +
+          '    <md-button ng-click="ctrl.closeDialog()">' +
+          '      Submit' +
+          '    </md-button>' +
+          '  </div>' +
+          '</md-dialog>',
+          locals: {
+            items: $scope.items,
+            closeDialog: $scope.closeDialog
+          },
+          bindToController: true,
+          controllerAs: 'ctrl',
+          controller: 'DialogController'
+      });
+
+        $mdDialog
+          .show( alert )
+          .finally(function() {
+            alert = undefined;
+          });
+      }
+      $scope.closeDialog = function() {
+        $mdDialog.hide();
+      };
+
+  })
+  .controller('DialogController', function($scope, $mdDialog) {
+  //alert( this.closeDialog );
+  //this.closeDialog = $scope.closeDialog;
+
+    /*$scope.closeDialog = function() {
+      $mdDialog.hide();
+    };*/
   });
+
+
+
