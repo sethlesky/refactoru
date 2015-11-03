@@ -141,9 +141,20 @@ angular.module('refactorQApp')
           '    </md-toolbar>'+
           '  <md-content>'+
           ' ' +
+          '  <md-input-container class="md-block" style="margin: 30px">' +
+          '    <label>Feedback</label>' +
+          '    <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>'+
+          '  </md-input-container>'+
           '  </md-content>' +
-          '  <div class="md-actions">' +
-          '    <md-button ng-click="ctrl.closeDialog()">' +
+          '  <div class="md-actions" layout="row", layout-align="space-between center">' +
+          '  <section layout="row" layout-sm="column" layout-align="center center">'+
+          '    <span>TIP</span>' +
+          '    <md-button class="groupX left">$5</md-button>'+
+          '    <md-button class="groupX middle">$25</md-button>'+
+          '    <md-button class="groupX middle">$50</md-button>'+
+          '    <md-button class="groupX right">$100</md-button>'+
+          '  </section>' +
+          '    <md-button class="md-raised" ng-click="ctrl.closeDialog()">' +
           '      Submit' +
           '    </md-button>' +
           '  </div>' +
