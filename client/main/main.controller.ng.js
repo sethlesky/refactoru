@@ -120,6 +120,7 @@ angular.module('refactorQApp')
           break;
         case "2":
           console.log(2);
+          $scope.showDialog();
           break
       }
     }
